@@ -1,0 +1,59 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+
+# Copyright (c) 2015 Vitaly Pikalov
+# Licensed under the MIT License
+
+---
+name: XP Positive DSL
+scopeName: source.xp_dsl
+fileTypes: [xp]
+uuid: 63c2678b-9ea6-4cd6-b7a2-69f764e70ac6
+
+patterns:
+
+
+- name: comment.line
+  match: \#.*
+
+
+- name: meta.tokengroup
+  begin: \{
+  end: \}
+  patterns:
+  - name: keyword.other.token
+    match: DATETIME|HOSTNAME|WORD|NUMBER|WORDDASH|LITERAL|STRING # учесть их только не как строки!!
+  - name: meta.token
+    match: AAA
+  - name: constant.language
+    match: BBB
+  - name: keyword.other.token
+    match: CCC
+
+
+- name: string
+  match: \'\'|\"\"
+- name: string
+  begin: ('|")
+  end: '[^\\]\1'
+
+- name: variable.language # formatstrings, conds
+  match: TEXT|FORMAT|JSON|TABULAR|EVENTLOG
+- name: variable.other # local vars like $tmp
+  match: \$\w+
+- name: variable # standard variable from the taxonomy
+  match: \w+
+
+# - name: keyword
+#   match: ^\s*#\s*id:|TEXT|FORMAT|JSON|TABULAR|EVENTLOG
+
+
+- name: invalid
+  match: .
+
+# - name: token
+#   begin: \{
+#   end: \}
+
+
+
+...
