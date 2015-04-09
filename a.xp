@@ -1,0 +1,31 @@
+  #  id: klmn prst
+
+TEXT = 'zzzzzzzz"\'ddzzzzzzz {CCC} {$xxx = WORD?}
+		{HOSTN"\}"AME ? x}
+		{abc|klmn?}
+		asd'
+
+{abc} {WORD}
+{ AAA } {BBB} { CCC }
+{ asx=AAA $klmn=BBB CCC }
+
+klmn = aad
+# kj1h23kj 123 kjh 
+kj1h23kj 123 kjh 
+
+object = 'asd '
+action = "klmn"
+
+$qaz qwe 123
+wsx $asd 456 
+edc zxc 789
+asd: sdf wer
+
+
+~CONST: constant numeric character escape language other klmn
+
+~KW: keyword control operator other qwe qwe qwe qwe qwe qwe qwe qwe qwe 
+
+~VAR: variable parameter language other qwe qwe qwe qwe qwe qwe qwe qwe qwe 
+
+~ENT: entity function type tag section inherited-class attribute-name

@@ -11,23 +11,103 @@ uuid: 63c2678b-9ea6-4cd6-b7a2-69f764e70ac6
 
 patterns:
 
+#####################################################################
+##  TMP/TEST
 
+- name: constant.test1  
+  match: '~CONST: (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: constant}
+    '2': {name: constant.numeric}
+    '3': {name: constant.character}
+    '4': {name: constant.character.escape}
+    '5': {name: constant.language}
+    '6': {name: constant.other}
+
+- name: keyword.test2
+  match: '~KW: (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: keyword}
+    '2': {name: keyword.control}
+    '3': {name: keyword.operator}
+    '4': {name: keyword.other}
+
+- name: variable.test3
+  match: '~VAR: (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: variable}
+    '2': {name: variable.parameter}
+    '3': {name: variable.language}
+    '4': {name: variable.other}
+
+- name: entity.test4
+  match: '~ENT: (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: entity}
+    '2': {name: entity.name.function}
+    '3': {name: entity.name.type}
+    '4': {name: entity.name.tag}
+    '5': {name: entity.name.section}
+    '6': {name: entity.other.inherited-class}
+    '7': {name: entity.other.attribute-name}
+
+##
+#####################################################################
+
+
+- name: meta.formulaId  # formula id
+  match: '^\s*#\s*(id\s*:)\s*(\w+)\s*(.*)'
+  captures:
+    '1': {name: keyword.control.formulaId}
+    '2': {name: constant}
+    '3': {name: invalid.illegal}
 - name: comment.line
   match: \#.*
 
 
-- name: meta.tokengroup
-  begin: \{
-  end: \}
+# - name: string.formatString
+- name: meta.formatString
+  begin: ^\s*!?(TEXT|FORMAT|JSON|TABULAR|EVENTLOG|XML)\s*=\s*('|")
+  beginCaptures:
+    '1': {name: keyword.control.formatSpecifier}
+  end: \2
   patterns:
-  - name: keyword.other.token
-    match: DATETIME|HOSTNAME|WORD|NUMBER|WORDDASH|LITERAL|STRING # учесть их только не как строки!!
-  - name: meta.token
-    match: AAA
-  - name: constant.language
-    match: BBB
-  - name: keyword.other.token
-    match: CCC
+
+  - name: meta.tokenGroup
+    begin: \{
+    end: \}
+    patterns:
+    - name: keyword.operator
+      match: '[|?]'
+    - name: constant.language.token
+      match: DATETIME|HOSTNAME|WORD|NUMBER|WORDDASH|LITERAL|STRING
+    - name: meta.tmpVarAssignment
+      match: \$(\w+)\s*=\s*
+      captures:
+        '1': {name: variable.parameter}
+    - name: constant.character.escape  # experimental. not for use inside the tokengroup,
+      match: \\.                       #  but inside strings, which is more accurate
+    - name: invalid.illegal # WARN: false positives are not thoroughly excluded
+      match: .
+
+  - name: constant.character.escape
+    match: \\.
+  - name: string
+    match: .
+
+
+# - name: meta.tokengroup
+#   begin: \{
+#   end: \}
+#   patterns:
+#   - name: keyword.other.token
+#     match: DATETIME|HOSTNAME|WORD|NUMBER|WORDDASH|LITERAL|STRING # учесть их только не как строки!!
+#   - name: meta.token
+#     match: AAA
+#   - name: constant.language
+#     match: BBB
+#   - name: keyword.other.token
+#     match: CCC
 
 
 - name: string
@@ -36,24 +116,17 @@ patterns:
   begin: ('|")
   end: '[^\\]\1'
 
+
 - name: variable.language # formatstrings, conds
-  match: TEXT|FORMAT|JSON|TABULAR|EVENTLOG
+  match: TEXT|FORMAT|JSON|TABULAR|EVENTLOG|XML
 - name: variable.other # local vars like $tmp
   match: \$\w+
 - name: variable # standard variable from the taxonomy
   match: \w+
 
-# - name: keyword
-#   match: ^\s*#\s*id:|TEXT|FORMAT|JSON|TABULAR|EVENTLOG
 
 
-- name: invalid
-  match: .
-
-# - name: token
-#   begin: \{
-#   end: \}
-
-
+# - name: invalid  ####### uncomment to see nonmatched
+#   match: .
 
 ...
