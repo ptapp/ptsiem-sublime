@@ -64,6 +64,10 @@ patterns:
 - name: comment.line
   match: \#.*
 
+- name: meta.cond
+  match: ^\s*!?(COND)\s*=
+  captures:
+    '1': {name: keyword.control.cond}
 
 # - name: string.formatString
 - name: meta.formatString
@@ -78,17 +82,23 @@ patterns:
     end: \}
     patterns:
     - name: keyword.operator
-      match: '[|?]'
+      match: '[|?+*]'
     - name: constant.language.token
-      match: DATETIME|HOSTNAME|WORD|NUMBER|WORDDASH|LITERAL|STRING
-    - name: meta.tmpVarAssignment
-      match: \$(\w+)\s*=\s*
+      match: WORDDASH|DATETIME|HOSTNAME|WORD|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR
+    - name: meta.assignment
+      match: \$?([.\w]+)\s*=\s* #(\w+)
       captures:
         '1': {name: variable.parameter}
     - name: constant.character.escape  # experimental. not for use inside the tokengroup,
       match: \\.                       #  but inside strings, which is more accurate
-    - name: invalid.illegal # WARN: false positives are not thoroughly excluded
-      match: .
+    - name: string.quoted
+      begin: ('|")
+      end: \1
+      patterns:
+      - name: constant.character.escape
+        match: \\.
+    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded (mind 'tabular')
+    #   match: .
 
   - name: constant.character.escape
     match: \\.
@@ -117,12 +127,12 @@ patterns:
   end: '[^\\]\1'
 
 
-- name: variable.language # formatstrings, conds
-  match: TEXT|FORMAT|JSON|TABULAR|EVENTLOG|XML
-- name: variable.other # local vars like $tmp
-  match: \$\w+
-- name: variable # standard variable from the taxonomy
-  match: \w+
+# - name: variable.language # formatstrings, conds
+#   match: TEXT|FORMAT|JSON|TABULAR|EVENTLOG|XML
+# - name: variable.other # local vars like $tmp
+#   match: \$\w+
+# - name: variable # standard variable from the taxonomy
+#   match: \w+
 
 
 

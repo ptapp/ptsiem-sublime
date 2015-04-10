@@ -1,6 +1,6 @@
   #  id: klmn prst
 
-TEXT = 'zzzzzzzz"\'ddzzzzzzz {CCC} {$xxx = WORD?}
+TEXT = 'zzzzzzz\'dzzzzzzz \{CCC} {$xxx = WORD?} {klmn = DATETIME| "jhkjh\"wwwwwwwkjh"}
 		{HOSTN"\}"AME ? x}
 		{abc|klmn?}
 		asd'
