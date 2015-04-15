@@ -84,7 +84,7 @@ patterns:
     - name: keyword.operator
       match: '[|?+*]'
     - name: constant.language.token
-      match: WORDDASH|DATETIME|HOSTNAME|WORD|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR
+      match: WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST
     - name: meta.assignment
       match: \$?([.\w]+)\s*=\s* #(\w+)
       captures:

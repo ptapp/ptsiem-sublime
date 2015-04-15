@@ -1,9 +1,10 @@
-  #  id: klmn prst
+  #  id: only_one_id incorrect tail
+	# standard comment
 
 TEXT = 'zzzzzzz\'dzzzzzzz \{CCC} {$xxx = WORD?} {klmn = DATETIME| "jhkjh\"wwwwwwwkjh"}
 		{HOSTN"\}"AME ? x}
 		{abc|klmn?}
-		asd'
+		asd{REST*}'
 
 {abc} {WORD}
 { AAA } {BBB} { CCC }
