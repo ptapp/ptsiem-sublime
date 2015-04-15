@@ -3,8 +3,7 @@
 
 TEXT = 'zzzzzzz\'dzzzzzzz \{CCC} {$xxx = WORD?} {klmn = DATETIME| "jhkjh\"wwwwwwwkjh"}
 		{HOSTN"\}"AME ? x}
-		{abc|klmn?}
-		asd{REST*}'
+		{abc|klmn?}  	asd   {"REST" REST = REST* "REST"} '
 
 {abc} {WORD}
 { AAA } {BBB} { CCC }
@@ -22,11 +21,3 @@ wsx $asd 456
 edc zxc 789
 asd: sdf wer
 
-
-~CONST: constant numeric character escape language other klmn
-
-~KW: keyword control operator other qwe qwe qwe qwe qwe qwe qwe qwe qwe 
-
-~VAR: variable parameter language other qwe qwe qwe qwe qwe qwe qwe qwe qwe 
-
-~ENT: entity function type tag section inherited-class attribute-name

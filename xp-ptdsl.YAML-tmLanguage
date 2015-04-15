@@ -37,43 +37,26 @@ patterns:
     begin: \{
     end: \}
     patterns:
-    - name: keyword.operator
-      match: '[|?+*]'
-    - name: constant.language.token
-      match: WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST
-    - name: meta.assignment
-      match: \$?([.\w]+)\s*=\s* #(\w+)
-      captures:
-        '1': {name: variable.parameter}
-    - name: constant.character.escape  # experimental. not for use inside the tokengroup,
-      match: \\.                       #  but inside strings, which is more accurate
     - name: string.quoted
       begin: ('|")
       end: \1
       patterns:
-      - name: constant.character.escape
-        match: \\.
+      - include: '#escaped_char'
+    - name: keyword.operator
+      match: '[|?+*]'
+    - name: meta.assignment
+      match: \$?([.\w]+)\s*=\s* #(\w+)
+      captures:
+        '1': {name: variable.parameter}
+    - name: constant.language.token
+      match: WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST
+    - include: '#escaped_char' # experimental. maybe, not for use inside the tokengroup
     # - name: invalid.illegal # WARN: false positives are not thoroughly excluded (mind 'tabular')
     #   match: .
 
-  - name: constant.character.escape
-    match: \\.
+  - include: '#escaped_char'
   - name: string
     match: .
-
-
-# - name: meta.tokengroup
-#   begin: \{
-#   end: \}
-#   patterns:
-#   - name: keyword.other.token
-#     match: DATETIME|HOSTNAME|WORD|NUMBER|WORDDASH|LITERAL|STRING # учесть их только не как строки!!
-#   - name: meta.token
-#     match: AAA
-#   - name: constant.language
-#     match: BBB
-#   - name: keyword.other.token
-#     match: CCC
 
 
 - name: string
@@ -83,16 +66,17 @@ patterns:
   end: '[^\\]\1'
 
 
-# - name: variable.language # formatstrings, conds
-#   match: TEXT|FORMAT|JSON|TABULAR|EVENTLOG|XML
 # - name: variable.other # local vars like $tmp
 #   match: \$\w+
 # - name: variable # standard variable from the taxonomy
 #   match: \w+
 
-
-
 # - name: invalid  ####### uncomment to see nonmatched
 #   match: .
+
+repository:
+  escaped_char:
+    name: constant.character.escape
+    match: \\.
 
 ...
