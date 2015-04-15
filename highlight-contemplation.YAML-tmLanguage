@@ -1,0 +1,51 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+
+# Copyright (c) 2015 Vitaly Pikalov
+# Licensed under the MIT License
+
+---
+name: Highlight Contemplation
+scopeName: source.highlight_contemplation
+fileTypes: [hc.tmp]
+uuid: e5dd19df-c0a0-4e1e-8be5-ab73b637f876
+
+patterns:
+
+- name: constant.test1  
+  match: '~CONST: (\w+) (\w+) (\w+) (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: constant}
+    '2': {name: constant.numeric}
+    '3': {name: constant.character}
+    '4': {name: constant.character.escape}
+    '5': {name: constant.language}
+    '6': {name: constant.other}
+
+- name: keyword.test2
+  match: '~KW: (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: keyword}
+    '2': {name: keyword.control}
+    '3': {name: keyword.operator}
+    '4': {name: keyword.other}
+
+- name: variable.test3
+  match: '~VAR: (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: variable}
+    '2': {name: variable.parameter}
+    '3': {name: variable.language}
+    '4': {name: variable.other}
+
+- name: entity.test4
+  match: '~ENT: (\w+) (\w+) (\w+) (\w+) (\w+) (\w+) (\w+) (\w+) (\w+).*'
+  captures:
+    '1': {name: entity}
+    '2': {name: entity.name.function}
+    '3': {name: entity.name.type}
+    '4': {name: entity.name.tag}
+    '5': {name: entity.name.section}
+    '6': {name: entity.other.inherited-class}
+    '7': {name: entity.other.attribute-name}
+
+...
