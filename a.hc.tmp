@@ -1,8 +1,13 @@
 
-~CONST: constant numeric character escape language other klmn
+~CONST: constant numeric character escape language other
 
-~KW: keyword control operator other qwe qwe qwe qwe qwe qwe qwe qwe qwe 
+~KW: keyword control operator other
 
-~VAR: variable parameter language other qwe qwe qwe qwe qwe qwe qwe qwe qwe 
+~VAR: variable parameter language other
 
-~ENT: entity function type tag section inherited-class attribute-name
+~ENT: entity function type tag section inheritedclass attributename
+
+~STOR: storage type modifier
+
+~SUP: support function class type constant variable other
+

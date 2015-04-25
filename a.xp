@@ -1,8 +1,8 @@
-  #  id: only_one_id incorrect tail
+  #  id: only_one_id two three four five
 	# standard comment
 
 TEXT = 'zzzzzzz\'dzzzzzzz \{CCC} {$xxx = WORD?} {klmn = DATETIME| "jhkjh\"wwwwwwwkjh"}
-		{HOSTN"\}"AME ? x}
+		{HOSTN"\}"AME ? x}\\\\\ \\\
 		{abc|klmn?}  	asd   {"REST" REST = REST* "REST"} '
 
 {abc} {WORD}
@@ -13,9 +13,29 @@ klmn = aad
 # kj1h23kj 123 kjh 
 kj1h23kj 123 kjh 
 
+subformula 'ahgduaydgiuayfg'
+
+switch $klmn
+	case qweqwe		in_subnet(qweqwe) + float(8) + bool("xxx")
+	case 'qweqwe'	$qweqwe
+	case 123123		"qweqew"
+endswitch
+
+if nulL
+	then epty = 4.6
+	else 'asd'
+endif
+
+klmn = if x!=null
+	then epty
+	else 'asd'
+endif
+
+klmn(foo()+prst(9))
 object = 'asd '
 action = "klmn
-as\"sdfsdfd"
+as\"sdfsdfd" + '
+sdfsdfsdf\''
 
 $qaz qwe 123
 wsx $asd 456 
