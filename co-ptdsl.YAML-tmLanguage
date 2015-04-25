@@ -1,0 +1,38 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+
+# Copyright (c) 2015 Vitaly Pikalov
+# Licensed under the MIT License
+
+---
+name: CO Positive DSL
+scopeName: source.co_dsl
+fileTypes: [co]
+uuid: d3894f6f-6a51-41d7-b2cb-497a4286c142
+
+patterns:
+
+- name: comment.line
+  match: \#.*
+
+- include: '#string_quoted_single_multiline'
+
+# - name: meta.space
+#   match: \s
+# - name: invalid.illegal  # to see not matched
+#   match: .
+
+
+repository:
+
+  escaped_char:
+    name: constant.character.escape
+    match: \\.
+
+  string_quoted_single_multiline:
+    name: string.quoted.single.multiline
+    begin: ('|")
+    end: \1
+    patterns:
+    - include: '#escaped_char'
+
+...

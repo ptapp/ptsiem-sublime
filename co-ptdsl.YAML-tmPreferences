@@ -1,0 +1,14 @@
+# [PackageDev] target_format: plist, ext: tmPreferences
+
+# Copyright (c) 2015 Vitaly Pikalov
+# Licensed under the MIT License
+
+---
+name: CO Positive DSL
+scope: source.co_dsl
+
+settings:
+  shellVariables:
+  - name: TM_COMMENT_START
+    value: '# '
+...
