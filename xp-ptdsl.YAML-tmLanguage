@@ -12,11 +12,11 @@ uuid: 63c2678b-9ea6-4cd6-b7a2-69f764e70ac6
 patterns:
 
 - name: meta.formulaId  # formula id
-  match: '^\s*#\s*(id\s*:)\s*(\w+)\s*(.*)'
+  # match: '^\s*#\s*(id\s*:)\s*(\w+)\s*(.*)'
+  match: '^\s*#\s*(id\s*:)'
   captures:
     '1': {name: keyword.control.formulaId}
-    '2': {name: constant}
-    '3': {name: invalid.illegal}
+
 - name: comment.line
   match: \#.*
 
@@ -25,9 +25,9 @@ patterns:
   captures:
     '1': {name: keyword.control.cond}
 
-# - name: string.formatString
-- name: meta.formatString
-  begin: ^\s*!?(TEXT|FORMAT|JSON|TABULAR|EVENTLOG|XML)\s*=\s*('|")
+
+- contentName: meta.formatString_forText
+  begin: ^\s*!?(TEXT|FORMAT)\s*=\s*('|")
   beginCaptures:
     '1': {name: keyword.control.formatSpecifier}
   end: \2
@@ -37,46 +37,135 @@ patterns:
     begin: \{
     end: \}
     patterns:
-    - name: string.quoted
-      begin: ('|")
-      end: \1
-      patterns:
-      - include: '#escaped_char'
+
+    - include: '#string_quoted_single_multiline'
+    
     - name: keyword.operator
       match: '[|?+*]'
+    
     - name: meta.assignment
-      match: \$?([.\w]+)\s*=\s* #(\w+)
+      match: (\$?)([.\w]+)\s*(=)
       captures:
-        '1': {name: variable.parameter}
-    - name: constant.language.token
+        '1': {name: keyword.other}
+        '2': {name: variable.parameter}
+        '3': {name: keyword.operator}
+    
+    # - name: constant.language.token
+    - name: support.constant.token
       match: WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST
-    - include: '#escaped_char' # experimental. maybe, not for use inside the tokengroup
+    
+    # - include: '#escaped_char' # experimental. maybe, not for use inside the tokengroup
+
+    # - name: meta.space
+    #   match: \s
     # - name: invalid.illegal # WARN: false positives are not thoroughly excluded (mind 'tabular')
     #   match: .
 
   - include: '#escaped_char'
+
   - name: string
     match: .
 
 
-- name: string
-  match: \'\'|\"\"
-- name: string
-  begin: ('|")
-  end: '[^\\]\1'
+- contentName: meta.formatString_forOthers
+  begin: ^\s*!?(JSON|TABULAR|EVENTLOG|XML)\s*=\s*('|")
+  beginCaptures:
+    '1': {name: keyword.control.formatSpecifier}
+  end: \2
+  patterns:
+
+  - name: meta.tokenGroup
+    begin: \{
+    end: \}
+    patterns:
+
+    - name: meta.assignment
+      match: (\$?)([.\w]+)\s*(=)
+      captures:
+        '1': {name: keyword.other}
+        '2': {name: variable.parameter}
+        '3': {name: keyword.operator}
+    
+    # - include: '#escaped_char' # experimental. maybe, not for use inside the tokengroup
+
+    # - name: meta.space
+    #   match: \s
+    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded (mind 'tabular')
+    #   match: .
+
+  - include: '#escaped_char'
 
 
-# - name: variable.other # local vars like $tmp
-#   match: \$\w+
-# - name: variable # standard variable from the taxonomy
-#   match: \w+
+- include: '#string_quoted_single_multiline'
 
-# - name: invalid  ####### uncomment to see nonmatched
+
+- name: keyword.operator
+  match: (==|!=|<=|>=|=|\+|\-|\*|>|<|div|mod|and|or|not)
+
+- name: keyword.control
+  match: (if|then|else|endif|switch|case|endswitch)
+
+- name: constant.numeric
+  match: \d+(\.\d+)?
+
+- name: constant.language
+  match: (?i)(null|true|false)  # how about true/false?
+
+- name: support.function.type_conversion_funcs
+  match: (string|number|number8|number16|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
+    maybe_number|maybe_number8|maybe_number16|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
+    epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|wmi_time_to_datetime|datetime_to_wmi_time)
+- name: support.function.general_utils
+  match: (length|coalesce)
+- name: support.function.list_utils
+  match: (append|remove|in_list)
+- name: support.function.ip_utils
+  match: (in_subnet)
+- name: support.function.datetime_utils
+  match: (year|month|day|hour|minute|second|timezone)
+- name: support.function.str_regex
+  match: (strip|substr|find_substr|match|upper|lower)
+- name: support.function.window_utils
+  match: (count_window|window_to_list)
+- name: support.function.active_set
+  match: (in_active_set)
+- name: support.function.maths
+  match: (pow|abs|floor|ceil|sign)
+
+- name: support.function.correla
+  match: (drop|emit|close|store_current_message)
+- name: support.function.lists
+  match: (append|remove|append_window|active_set_insert|active_set_remove)
+- name: support.function.normali
+  match: (submessage)
+
+- name: storage.type
+  match: (endsubformula|subformula)
+
+- name: meta.var
+  match: (\$?)([A-Za-z_][A-Za-z0-9_.]*[A-Za-z0-9_])
+  captures:
+    '1': {name: keyword.other}
+    '2': {name: variable}
+
+
+# - name: meta.space
+#   match: \s
+# - name: invalid.illegal  # to see not matched
 #   match: .
 
+
 repository:
+
   escaped_char:
     name: constant.character.escape
     match: \\.
+
+  string_quoted_single_multiline:
+    name: string.quoted.single.multiline
+    begin: ('|")
+    end: \1
+    patterns:
+    - include: '#escaped_char'
 
 ...
