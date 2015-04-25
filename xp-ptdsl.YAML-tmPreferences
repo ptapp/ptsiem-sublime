@@ -1,0 +1,14 @@
+# [PackageDev] target_format: plist, ext: tmPreferences
+
+# Copyright (c) 2015 Vitaly Pikalov
+# Licensed under the MIT License
+
+---
+name: XP Positive DSL
+scope: source.xp_dsl
+
+settings:
+  shellVariables:
+  - name: TM_COMMENT_START
+    value: '# '
+...
