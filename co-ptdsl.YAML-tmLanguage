@@ -11,10 +11,50 @@ uuid: d3894f6f-6a51-41d7-b2cb-497a4286c142
 
 patterns:
 
+- name: meta.id  # (TODO: whose id?)
+  match: '^\s*#\s*(id\s*:)'
+  captures:
+    '1': {name: keyword.control.formulaId}
+
 - name: comment.line
   match: \#.*
 
 - include: '#string_quoted_single_multiline'
+
+
+- name: meta.identifier  # with a dot
+  match: '(\$)?([A-Za-z_]\w*(\.\w+)+)'
+  captures:
+    '1': {name: keyword.other}
+
+
+- name: keyword.operator
+  match: '[|?+*]'
+- name: keyword.operator
+  match: (==|!=|<=|>=|=|\+|\-|\*|>|<)
+- name: keyword.operator
+  match: \b(div|mod|and|or|not)\b
+
+- name: constant.other  # time/duration: 4s, 3m, 2h, 1d
+  match: \b\d+[dhms]\b
+- name: constant.numeric
+  match: \b(\d+(\.\d+)?)\b
+
+- name: constant.language
+  match: (?i)\b(null|true|false)\b  # TODO: case sensitiveness?
+
+- name: storage.type
+  match: '\b(event|rule)\b'
+
+- name: keyword.control
+  match: '\b(key|filter|within|emit|notify|from)\b'
+
+
+- name: meta.identifier  # all the others
+  match: '(\$)?([A-Za-z_]\w*)'
+  captures:
+    '1': {name: keyword.other}
+
 
 # - name: meta.space
 #   match: \s
