@@ -2,14 +2,14 @@
 	# standard comment
 
 TEXT = 'zzzzzzz\'dzzzzzzz \{CCC} {$xxx = WORD?} {klmn = DATETIME| "jhkjh\"wwwwwwwkjh"}
-		{HOSTN"\}"AME ? x}\\\\\ \\\
+		{HOSTN"\}"AME ? x}\\\\\ \\\ {WORDA}
 		{abc|klmn?}  	asd   {"REST" REST = REST* "REST"} '
 
 {abc} {WORD}
 { AAA } {BBB} { CCC }
 { asx=AAA $klmn=BBB CCC }
 
-klmn = aad
+klmn = and.not
 # kj1h23kj 123 kjh 
 kj1h23kj 123 kjh 
 
@@ -32,6 +32,7 @@ klmn = if x!=null
 endif
 
 klmn(foo()+prst(9))
+in_active_set float append 
 object = 'asd '
 action = "klmn
 as\"sdfsdfd" + '

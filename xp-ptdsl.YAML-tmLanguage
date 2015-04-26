@@ -52,13 +52,11 @@ patterns:
     
     # - name: constant.language.token
     - name: support.constant.token
-      match: WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST
+      match: \b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b
     
-    # - include: '#escaped_char' # experimental. maybe, not for use inside the tokengroup
-
     # - name: meta.space
     #   match: \s
-    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded (mind 'tabular')
+    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded
     #   match: .
 
   - include: '#escaped_char'
@@ -86,11 +84,9 @@ patterns:
         '2': {name: variable.parameter}
         '3': {name: keyword.operator}
     
-    # - include: '#escaped_char' # experimental. maybe, not for use inside the tokengroup
-
     # - name: meta.space
     #   match: \s
-    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded (mind 'tabular')
+    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded
     #   match: .
 
   - include: '#escaped_char'
@@ -99,54 +95,63 @@ patterns:
 - include: '#string_quoted_single_multiline'
 
 
-- name: keyword.operator
-  match: (==|!=|<=|>=|=|\+|\-|\*|>|<|div|mod|and|or|not)
-
-- name: keyword.control
-  match: (if|then|else|endif|switch|case|endswitch)
-
-- name: constant.numeric
-  match: \d+(\.\d+)?
-
-- name: constant.language
-  match: (?i)(null|true|false)  # how about true/false?
-
-- name: support.function.type_conversion_funcs
-  match: (string|number|number8|number16|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
-    maybe_number|maybe_number8|maybe_number16|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
-    epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|wmi_time_to_datetime|datetime_to_wmi_time)
-- name: support.function.general_utils
-  match: (length|coalesce)
-- name: support.function.list_utils
-  match: (append|remove|in_list)
-- name: support.function.ip_utils
-  match: (in_subnet)
-- name: support.function.datetime_utils
-  match: (year|month|day|hour|minute|second|timezone)
-- name: support.function.str_regex
-  match: (strip|substr|find_substr|match|upper|lower)
-- name: support.function.window_utils
-  match: (count_window|window_to_list)
-- name: support.function.active_set
-  match: (in_active_set)
-- name: support.function.maths
-  match: (pow|abs|floor|ceil|sign)
-
-- name: support.function.correla
-  match: (drop|emit|close|store_current_message)
-- name: support.function.lists
-  match: (append|remove|append_window|active_set_insert|active_set_remove)
-- name: support.function.normali
-  match: (submessage)
-
-- name: storage.type
-  match: (endsubformula|subformula)
-
-- name: meta.var
-  match: (\$?)([A-Za-z_][A-Za-z0-9_.]*[A-Za-z0-9_])
+- name: meta.identifier  # with a dot
+  match: '(\$)?([A-Za-z_]\w*(\.\w+)+)'
   captures:
     '1': {name: keyword.other}
-    '2': {name: variable}
+
+
+- name: keyword.operator
+  match: (==|!=|<=|>=|=|\+|\-|\*|>|<)
+- name: keyword.operator
+  match: \b(div|mod|and|or|not)\b
+
+- name: keyword.control
+  match: \b(if|then|else|endif|switch|case|endswitch)\b
+
+
+- name: constant.numeric
+  match: \b(\d+(\.\d+)?)\b
+
+- name: constant.language
+  match: (?i)\b(null|true|false)\b  # TODO: 1) case sensitiveness? 2) how about true/false?
+
+- name: support.function.type_conversion_funcs
+  match: \b(string|number|number8|number16|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
+    maybe_number|maybe_number8|maybe_number16|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
+    epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|wmi_time_to_datetime|datetime_to_wmi_time)\b
+- name: support.function.general_utils
+  match: \b(length|coalesce)\b
+- name: support.function.list_utils
+  match: \b(append|remove|in_list)\b
+- name: support.function.ip_utils
+  match: \b(in_subnet)\b
+- name: support.function.datetime_utils
+  match: \b(year|month|day|hour|minute|second|timezone)\b
+- name: support.function.str_regex
+  match: \b(strip|substr|find_substr|match|upper|lower)\b
+- name: support.function.window_utils
+  match: \b(count_window|window_to_list)\b
+- name: support.function.active_set
+  match: \b(in_active_set)\b
+- name: support.function.maths
+  match: \b(pow|abs|floor|ceil|sign)\b
+
+- name: support.function.correla
+  match: \b(drop|emit|close|store_current_message)\b
+- name: support.function.lists
+  match: \b(append|remove|append_window|active_set_insert|active_set_remove)\b
+- name: support.function.normali
+  match: \b(submessage)\b
+
+- name: storage.type
+  match: \b(endsubformula|subformula)\b
+
+
+- name: meta.identifier  # all the others
+  match: '(\$)?([A-Za-z_]\w*)'
+  captures:
+    '1': {name: keyword.other}
 
 
 # - name: meta.space
