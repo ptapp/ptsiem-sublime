@@ -5,7 +5,7 @@
 asd asd and.n$ot.or $orrule.rulenot
 
 event eventName:
-    sorted_key:
+    key:
         aa, cc, xx.zz
     filter {
         qwe == "qwe" and
@@ -26,5 +26,3 @@ rule rule: (asdqdqd kjh_wer? tgdvdfv.dfcajgf) within 1d
 
 notify Ajhg.Buyastc from Ckjahskd_Dkjhsdf:
     X = A.bbbbb
-
-aggregate klmn: prst[a, b] within 2m

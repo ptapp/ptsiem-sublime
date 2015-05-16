@@ -1,0 +1,46 @@
+  #  id: only_one_id two three four five
+	# standard comment
+
+TEXT = 'zzzzzzz\'dzzzzzzz \{CCC} {$xxx = WORD?} {klmn = DATETIME| "jhkjh\"wwwwwwwkjh"}
+		{HOSTN"\}"AME ? x}\\\\\ \\\ {WORDA}
+		{REST}{abc|klmn?}  	asd   {"REST" REST = REST* "REST"} '
+
+{abc} {WORD}
+{ AAA } {BBB} { CCC }
+{ asx=AAA $klmn=BBB CCC }
+
+
+klmn = and.not
+# kj1h23kj 123 kjh 
+kj1h23kj 123 kjh 
+
+subformula 'ahgduaydgiuayfg'
+
+switch $klmn
+	case qweqwe		in_subnet(qweqwe) + float(8) + bool("xxx")
+	case 'qweqwe'	$qweqwe
+	case 123123		"qweqew"
+endswitch
+
+if nulL
+	then epty = 4.6
+	else 'asd'
+endif
+
+klmn = if x!=null
+	then epty
+	else 'asd'
+endif
+
+klmn(foo()+prst(9))
+in_active_set float append 
+object = 'asd '
+action = "klmn
+as\"sdfsdfd" + '
+sdfsdfsdf\''
+
+$qaz qwe 123
+wsx $asd 456 
+edc zxc 789
+asd: sdf wer
+

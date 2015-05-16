@@ -36,7 +36,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.cond</string>
+					<string>keyword.other.cond</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -52,75 +52,18 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.formatSpecifier</string>
+					<string>keyword.other.formatSpecifier</string>
 				</dict>
 			</dict>
 			<key>contentName</key>
-			<string>meta.formatString_forText</string>
+			<string>meta.xp_formatstring.text</string>
 			<key>end</key>
 			<string>\2</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>\{</string>
-					<key>end</key>
-					<string>\}</string>
-					<key>name</key>
-					<string>meta.tokenGroup</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#string_quoted_single_multiline</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>[|?+*]</string>
-							<key>name</key>
-							<string>keyword.operator</string>
-						</dict>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.other</string>
-								</dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>variable.parameter</string>
-								</dict>
-								<key>3</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.operator</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>(\$?)([.\w]+)\s*(=)</string>
-							<key>name</key>
-							<string>meta.assignment</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b</string>
-							<key>name</key>
-							<string>support.constant.token</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
 					<key>include</key>
-					<string>#escaped_char</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>.</string>
-					<key>name</key>
-					<string>string</string>
+					<string>text.xp_formatstring.text</string>
 				</dict>
 			</array>
 		</dict>
@@ -132,53 +75,18 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.formatSpecifier</string>
+					<string>keyword.other.formatSpecifier</string>
 				</dict>
 			</dict>
 			<key>contentName</key>
-			<string>meta.formatString_forOthers</string>
+			<string>meta.formatString.other</string>
 			<key>end</key>
 			<string>\2</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>\{</string>
-					<key>end</key>
-					<string>\}</string>
-					<key>name</key>
-					<string>meta.tokenGroup</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.other</string>
-								</dict>
-								<key>2</key>
-								<dict>
-									<key>name</key>
-									<string>variable.parameter</string>
-								</dict>
-								<key>3</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.operator</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>(\$?)([.\w]+)\s*(=)</string>
-							<key>name</key>
-							<string>meta.assignment</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
 					<key>include</key>
-					<string>#escaped_char</string>
+					<string>text.xp_formatstring.other</string>
 				</dict>
 			</array>
 		</dict>
@@ -232,7 +140,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(string|number|number8|number16|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue| maybe_number|maybe_number8|maybe_number16|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime| epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|wmi_time_to_datetime|datetime_to_wmi_time)\b</string>
+			<string>\b(string|number16|number8|number|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue| maybe_number16|maybe_number8|maybe_number|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime| epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|win_ticks_to_datetime|datetime_to_win_ticks)\b</string>
 			<key>name</key>
 			<string>support.function.type_conversion_funcs</string>
 		</dict>

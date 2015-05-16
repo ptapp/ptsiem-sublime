@@ -23,80 +23,31 @@ patterns:
 - name: meta.cond
   match: ^\s*!?(COND)\s*=
   captures:
-    '1': {name: keyword.control.cond}
+    '1': {name: keyword.other.cond}
 
-
-- contentName: meta.formatString_forText
+- contentName: meta.xp_formatstring.text
   begin: ^\s*!?(TEXT|FORMAT)\s*=\s*('|")
   beginCaptures:
-    '1': {name: keyword.control.formatSpecifier}
+    '1': {name: keyword.other.formatSpecifier}
   end: \2
   patterns:
+  - include: text.xp_formatstring.text
 
-  - name: meta.tokenGroup
-    begin: \{
-    end: \}
-    patterns:
-
-    - include: '#string_quoted_single_multiline'
-    
-    - name: keyword.operator
-      match: '[|?+*]'
-    
-    - name: meta.assignment
-      match: (\$?)([.\w]+)\s*(=)
-      captures:
-        '1': {name: keyword.other}
-        '2': {name: variable.parameter}
-        '3': {name: keyword.operator}
-    
-    # - name: constant.language.token
-    - name: support.constant.token
-      match: \b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b
-    
-    # - name: meta.space
-    #   match: \s
-    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded
-    #   match: .
-
-  - include: '#escaped_char'
-
-  - name: string
-    match: .
-
-
-- contentName: meta.formatString_forOthers
+- contentName: meta.formatString.other
   begin: ^\s*!?(JSON|TABULAR|EVENTLOG|XML)\s*=\s*('|")
   beginCaptures:
-    '1': {name: keyword.control.formatSpecifier}
+    '1': {name: keyword.other.formatSpecifier}
   end: \2
   patterns:
+  - include: text.xp_formatstring.other
 
-  - name: meta.tokenGroup
-    begin: \{
-    end: \}
-    patterns:
-
-    - name: meta.assignment
-      match: (\$?)([.\w]+)\s*(=)
-      captures:
-        '1': {name: keyword.other}
-        '2': {name: variable.parameter}
-        '3': {name: keyword.operator}
-    
-    # - name: meta.space
-    #   match: \s
-    # - name: invalid.illegal # WARN: false positives are not thoroughly excluded
-    #   match: .
-
-  - include: '#escaped_char'
 
 
 - include: '#string_quoted_single_multiline'
 
 
-- name: meta.identifier  # with a dot
-  match: '(\$)?([A-Za-z_]\w*(\.\w+)+)'
+- name: meta.identifier
+  match: '(\$)?([A-Za-z_]\w*(\.\w+)+)'  # dot is allowed as a part of name!
   captures:
     '1': {name: keyword.other}
 
@@ -116,10 +67,11 @@ patterns:
 - name: constant.language
   match: (?i)\b(null|true|false)\b  # TODO: 1) case sensitiveness? 2) how about true/false?
 
+
 - name: support.function.type_conversion_funcs
-  match: \b(string|number|number8|number16|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
-    maybe_number|maybe_number8|maybe_number16|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
-    epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|wmi_time_to_datetime|datetime_to_wmi_time)\b
+  match: \b(string|number16|number8|number|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
+    maybe_number16|maybe_number8|maybe_number|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
+    epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|win_ticks_to_datetime|datetime_to_win_ticks)\b
 - name: support.function.general_utils
   match: \b(length|coalesce)\b
 - name: support.function.list_utils
@@ -143,6 +95,7 @@ patterns:
   match: \b(append|remove|append_window|active_set_insert|active_set_remove)\b
 - name: support.function.normali
   match: \b(submessage)\b
+
 
 - name: storage.type
   match: \b(endsubformula|subformula)\b
