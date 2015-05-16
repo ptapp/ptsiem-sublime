@@ -1,0 +1,59 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+
+# Copyright (c) 2015 Vitaly Pikalov
+# Licensed under the MIT License
+
+---
+name: XP TEXT Format String
+scopeName: text.xp_formatstring.text
+# fileTypes: []
+uuid: 40b05e72-3616-4f2b-a954-867b6dd43deb
+
+patterns:
+
+- name: meta.tokenGroup
+  begin: \{
+  end: \}
+  patterns:
+
+  - include: '#string_quoted_single_multiline'
+  
+  - name: keyword.operator
+    match: '[|?+*]'
+  
+  - name: meta.assignment
+    match: (\$?)([.\w]+)\s*(=)
+    captures:
+      '1': {name: keyword.other}
+      '2': {name: variable.parameter}
+      '3': {name: keyword.operator}
+  
+  # - name: constant.language.token
+  - name: support.constant.token
+    match: \b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b
+  
+  # - name: meta.space
+  #   match: \s
+  # - name: invalid.illegal # WARN/TODO: false positives are not thoroughly excluded
+  #   match: .
+
+- include: '#escaped_char'
+
+- name: string
+  match: .
+
+
+repository:
+
+  escaped_char:
+    name: constant.character.escape
+    match: \\.
+
+  string_quoted_single_multiline:
+    name: string.quoted.single.multiline
+    begin: ('|")
+    end: \1
+    patterns:
+    - include: '#escaped_char'
+
+...
