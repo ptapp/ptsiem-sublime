@@ -70,7 +70,7 @@ patterns:
 
 - name: support.function.type_conversion_funcs
   match: \b(string|number16|number8|number|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
-    maybe_number|maybe_number8|maybe_number16|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
+    maybe_number16|maybe_number8|maybe_number|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
     epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|win_ticks_to_datetime|datetime_to_win_ticks)\b
 - name: support.function.general_utils
   match: \b(length|coalesce)\b
