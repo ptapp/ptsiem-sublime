@@ -116,10 +116,11 @@ patterns:
 - name: constant.language
   match: (?i)\b(null|true|false)\b  # TODO: 1) case sensitiveness? 2) how about true/false?
 
+
 - name: support.function.type_conversion_funcs
-  match: \b(string|number|number8|number16|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
+  match: \b(string|number16|number8|number|float|duration|macaddr|ipv4|ipv6|datetime|bool|keyvalue|
     maybe_number|maybe_number8|maybe_number16|maybe_float|maybe_duration|maybe_macaddr|maybe_ipv4|maybe_ipv6|maybe_datetime|
-    epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|wmi_time_to_datetime|datetime_to_wmi_time)\b
+    epoch_to_datetime|epoch_ms_to_datetime|datetime_to_epoch|datetime_to_epoch_ms|win_ticks_to_datetime|datetime_to_win_ticks)\b
 - name: support.function.general_utils
   match: \b(length|coalesce)\b
 - name: support.function.list_utils
@@ -143,6 +144,7 @@ patterns:
   match: \b(append|remove|append_window|active_set_insert|active_set_remove)\b
 - name: support.function.normali
   match: \b(submessage)\b
+
 
 - name: storage.type
   match: \b(endsubformula|subformula)\b
