@@ -22,16 +22,12 @@ patterns:
       '1': {name: keyword.other}
       '2': {name: variable.parameter}
       '3': {name: keyword.operator}
-  
-  # - name: meta.space
-  #   match: \s
-  # - name: invalid.illegal # WARN/TODO: false positives are not thoroughly excluded
-  #   match: .
 
-# - include: '#escaped_char'  # ?
+  - include: '#space'
+  - include: '#anyother'
 
 
-# repository:
+repository:
 
 #   escaped_char:
 #     name: constant.character.escape
@@ -43,5 +39,13 @@ patterns:
 #     end: \1
 #     patterns:
 #     - include: '#escaped_char'
+
+  space:
+    name: meta.space
+    match: \s
+
+  anyother:
+    name: invalid.illegal
+    match: .
 
 ...

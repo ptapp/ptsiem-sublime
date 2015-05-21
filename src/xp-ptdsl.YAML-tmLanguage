@@ -107,10 +107,9 @@ patterns:
     '1': {name: keyword.other}
 
 
-# - name: meta.space
-#   match: \s
-# - name: invalid.illegal  # to see not matched
-#   match: .
+# # To see not matched:
+# - include: '#space'
+# - include: '#anyother'
 
 
 repository:
@@ -125,5 +124,13 @@ repository:
     end: \1
     patterns:
     - include: '#escaped_char'
+
+  space:
+    name: meta.space
+    match: \s
+
+  anyother:
+    name: invalid.illegal
+    match: .
 
 ...

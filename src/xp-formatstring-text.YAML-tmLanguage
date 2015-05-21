@@ -32,10 +32,8 @@ patterns:
   - name: support.constant.token
     match: \b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b
   
-  # - name: meta.space
-  #   match: \s
-  # - name: invalid.illegal # WARN/TODO: false positives are not thoroughly excluded
-  #   match: .
+  - include: '#space'
+  - include: '#anyother'
 
 - include: '#escaped_char'
 
@@ -55,5 +53,13 @@ repository:
     end: \1
     patterns:
     - include: '#escaped_char'
+
+  space:
+    name: meta.space
+    match: \s
+
+  anyother:
+    name: invalid.illegal
+    match: .
 
 ...
