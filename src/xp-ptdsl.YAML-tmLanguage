@@ -58,7 +58,7 @@ patterns:
   match: \b(div|mod|and|or|not)\b
 
 - name: keyword.control
-  match: \b(if|then|else|endif|switch|case|endswitch)\b
+  match: \b(endif|elif|if|then|else|endswitch|case|switch)\b
 
 
 - name: constant.numeric
