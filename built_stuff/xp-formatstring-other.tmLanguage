@@ -21,27 +21,63 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other</string>
+							<string>variable</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>variable.parameter</string>
+							<string>keyword.other</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.operator</string>
 						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>support.constant.var_or_expr</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\$?)([.\w]+)\s*(=)</string>
+					<string>((\$?)[.\w]+)\s*(=)\s*([.\w]+)</string>
 					<key>name</key>
 					<string>meta.assignment</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#space</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#anyother</string>
+				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>match</key>
+			<string>\w+</string>
+			<key>name</key>
+			<string>support.constant.var_or_expr</string>
+		</dict>
 	</array>
+	<key>repository</key>
+	<dict>
+		<key>anyother</key>
+		<dict>
+			<key>match</key>
+			<string>.</string>
+			<key>name</key>
+			<string>invalid.illegal</string>
+		</dict>
+		<key>space</key>
+		<dict>
+			<key>match</key>
+			<string>\s</string>
+			<key>name</key>
+			<string>meta.space</string>
+		</dict>
+	</dict>
 	<key>scopeName</key>
 	<string>text.xp_formatstring.other</string>
 	<key>uuid</key>

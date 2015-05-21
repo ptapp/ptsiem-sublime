@@ -31,12 +31,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other</string>
+							<string>variable</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>variable.parameter</string>
+							<string>keyword.other</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -45,7 +45,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\$?)([.\w]+)\s*(=)</string>
+					<string>((\$?)[.\w]+)\s*(=)</string>
 					<key>name</key>
 					<string>meta.assignment</string>
 				</dict>
@@ -54,6 +54,14 @@
 					<string>\b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b</string>
 					<key>name</key>
 					<string>support.constant.token</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#space</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#anyother</string>
 				</dict>
 			</array>
 		</dict>
@@ -70,12 +78,26 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>anyother</key>
+		<dict>
+			<key>match</key>
+			<string>.</string>
+			<key>name</key>
+			<string>invalid.illegal</string>
+		</dict>
 		<key>escaped_char</key>
 		<dict>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>
 			<string>constant.character.escape</string>
+		</dict>
+		<key>space</key>
+		<dict>
+			<key>match</key>
+			<string>\s</string>
+			<key>name</key>
+			<string>meta.space</string>
 		</dict>
 		<key>string_quoted_single_multiline</key>
 		<dict>

@@ -122,7 +122,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(if|then|else|endif|switch|case|endswitch)\b</string>
+			<string>\b(endif|elif|if|then|else|endswitch|case|switch)\b</string>
 			<key>name</key>
 			<string>keyword.control</string>
 		</dict>
@@ -233,12 +233,26 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>anyother</key>
+		<dict>
+			<key>match</key>
+			<string>.</string>
+			<key>name</key>
+			<string>invalid.illegal</string>
+		</dict>
 		<key>escaped_char</key>
 		<dict>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>
 			<string>constant.character.escape</string>
+		</dict>
+		<key>space</key>
+		<dict>
+			<key>match</key>
+			<string>\s</string>
+			<key>name</key>
+			<string>meta.space</string>
 		</dict>
 		<key>string_quoted_single_multiline</key>
 		<dict>
