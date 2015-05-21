@@ -17,21 +17,21 @@ patterns:
   patterns:
 
   - name: meta.assignment
-    match: (\$?)([.\w]+)\s*(=)
+    match: ((\$?)[.\w]+)\s*(=)\s*([.\w]+)
     captures:
-      '1': {name: keyword.other}
-      '2': {name: variable.parameter}
+      '1': {name: variable}
+      '2': {name: keyword.other}
       '3': {name: keyword.operator}
+      '4': {name: support.constant.var_or_expr}
+
+  - include: '#space'
+  - include: '#anyother'
   
-  # - name: meta.space
-  #   match: \s
-  # - name: invalid.illegal # WARN/TODO: false positives are not thoroughly excluded
-  #   match: .
-
-# - include: '#escaped_char'  # ?
+- name: support.constant.var_or_expr
+  match: \w+
 
 
-# repository:
+repository:
 
 #   escaped_char:
 #     name: constant.character.escape
@@ -43,5 +43,13 @@ patterns:
 #     end: \1
 #     patterns:
 #     - include: '#escaped_char'
+
+  space:
+    name: meta.space
+    match: \s
+
+  anyother:
+    name: invalid.illegal
+    match: .
 
 ...

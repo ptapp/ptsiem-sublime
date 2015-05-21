@@ -3,11 +3,12 @@
 
 TEXT = 'zzzzzzz\'dzzzzzzz \{CCC} {$xxx = WORD?} {klmn = DATETIME| "jhkjh\"wwwwwwwkjh"}
 		{HOSTN"\}"AME ? x}\\\\\ \\\ {WORDA}
-		{abc|klmn?}  	asd   {"REST" REST = REST* "REST"} '
+		{REST}{abc|klmn?}  	asd   {"REST" REST = REST* "REST"} '
 
 {abc} {WORD}
 { AAA } {BBB} { CCC }
 { asx=AAA $klmn=BBB CCC }
+
 
 klmn = and.not
 # kj1h23kj 123 kjh 

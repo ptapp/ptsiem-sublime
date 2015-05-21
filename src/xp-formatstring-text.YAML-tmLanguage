@@ -22,20 +22,18 @@ patterns:
     match: '[|?+*]'
   
   - name: meta.assignment
-    match: (\$?)([.\w]+)\s*(=)
+    match: ((\$?)[.\w]+)\s*(=)
     captures:
-      '1': {name: keyword.other}
-      '2': {name: variable.parameter}
+      '1': {name: variable}
+      '2': {name: keyword.other}
       '3': {name: keyword.operator}
   
   # - name: constant.language.token
   - name: support.constant.token
     match: \b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b
   
-  # - name: meta.space
-  #   match: \s
-  # - name: invalid.illegal # WARN/TODO: false positives are not thoroughly excluded
-  #   match: .
+  - include: '#space'
+  - include: '#anyother'
 
 - include: '#escaped_char'
 
@@ -55,5 +53,13 @@ repository:
     end: \1
     patterns:
     - include: '#escaped_char'
+
+  space:
+    name: meta.space
+    match: \s
+
+  anyother:
+    name: invalid.illegal
+    match: .
 
 ...
