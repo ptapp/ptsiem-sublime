@@ -17,14 +17,18 @@ patterns:
   patterns:
 
   - name: meta.assignment
-    match: (\$?)([.\w]+)\s*(=)
+    match: ((\$?)[.\w]+)\s*(=)\s*([.\w]+)
     captures:
-      '1': {name: keyword.other}
-      '2': {name: variable.parameter}
+      '1': {name: variable}
+      '2': {name: keyword.other}
       '3': {name: keyword.operator}
+      '4': {name: support.constant.var_or_expr}
 
   - include: '#space'
   - include: '#anyother'
+  
+- name: support.constant.var_or_expr
+  match: \w+
 
 
 repository:

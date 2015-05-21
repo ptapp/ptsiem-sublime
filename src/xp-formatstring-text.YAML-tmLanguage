@@ -22,10 +22,10 @@ patterns:
     match: '[|?+*]'
   
   - name: meta.assignment
-    match: (\$?)([.\w]+)\s*(=)
+    match: ((\$?)[.\w]+)\s*(=)
     captures:
-      '1': {name: keyword.other}
-      '2': {name: variable.parameter}
+      '1': {name: variable}
+      '2': {name: keyword.other}
       '3': {name: keyword.operator}
   
   # - name: constant.language.token
