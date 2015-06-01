@@ -1,7 +1,7 @@
 # Sublime Text support for some Positive Languages
 
 ## XP and CO
-There are two mini-languages, say XP and CO, used to describe normalization instructions and correlation rules for the PTSIEM platform. This project implements Sublime Text (3) syntax definition and some settings for them.
+There are two mini-languages, say XP and CO, used to describe normalization instructions and correlation rules for the MPX SIEM platform. This project implements Sublime Text (3) syntax definition and some settings for them.
 
 Syntax definitions provide syntax highlighting for our DLSs, but there is no special color scheme enclosed herewith.
 
