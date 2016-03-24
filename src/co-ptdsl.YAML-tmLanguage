@@ -47,7 +47,7 @@ patterns:
   match: '\b(event|rule|aggregate)\b'
 
 - name: keyword.control
-  match: '\b(sorted_key|key|filter|within|emit|notify|from)\b'
+  match: '\b(within|with different|timer|sorted_key|query|on|notify|key|from|filter|emit)\b'
 
 
 - name: meta.identifier  # all the others
