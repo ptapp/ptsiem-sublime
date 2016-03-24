@@ -30,7 +30,7 @@ patterns:
   
   # - name: constant.language.token
   - name: support.constant.token
-    match: \b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b
+    match: \b(WORDDASH|WORD|STRING|REST|NUMBER|NTUSER|MACADDR|LITERAL|IPV6|IPV4|HOSTNAME|DATETIME|CSV)\b
   
   - include: '#space'
   - include: '#anyother'
