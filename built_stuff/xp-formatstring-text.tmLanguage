@@ -26,6 +26,12 @@
 					<string>keyword.operator</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>[(),]</string>
+					<key>name</key>
+					<string>meta.some_other</string>
+				</dict>
+				<dict>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -51,7 +57,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(WORDDASH|WORD|DATETIME|HOSTNAME|NUMBER|LITERAL|STRING|IPV4|IPV6|MACADDR|NTUSER|REST)\b</string>
+					<string>\b(WORDDASH|WORD|STRING|REST|NUMBER|NTUSER|MACADDR|LITERAL|KEYVALUE|IPV6|IPV4|HOSTNAME|DATETIME|CSV)\b</string>
 					<key>name</key>
 					<string>support.constant.token</string>
 				</dict>

@@ -86,13 +86,19 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>\b(exec_query|any)\b</string>
+			<key>name</key>
+			<string>support.function</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>\b(event|rule|aggregate)\b</string>
 			<key>name</key>
 			<string>storage.type</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(sorted_key|key|filter|within|emit|notify|from)\b</string>
+			<string>\b(within|with different|timer|sorted_key|query|on|notify|key|from|filter|emit)\b</string>
 			<key>name</key>
 			<string>keyword.control</string>
 		</dict>
