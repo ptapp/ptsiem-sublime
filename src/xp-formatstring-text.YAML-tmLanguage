@@ -20,6 +20,9 @@ patterns:
   
   - name: keyword.operator
     match: '[|?+*]'
+
+  - name: meta.some_other # KEYVALUE token arguments supposed to mean;
+    match: '[(),]'        # TODO: more strict would be better
   
   - name: meta.assignment
     match: ((\$?)[.\w]+)\s*(=)
@@ -30,7 +33,7 @@ patterns:
   
   # - name: constant.language.token
   - name: support.constant.token
-    match: \b(WORDDASH|WORD|STRING|REST|NUMBER|NTUSER|MACADDR|LITERAL|IPV6|IPV4|HOSTNAME|DATETIME|CSV)\b
+    match: \b(WORDDASH|WORD|STRING|REST|NUMBER|NTUSER|MACADDR|LITERAL|KEYVALUE|IPV6|IPV4|HOSTNAME|DATETIME|CSV)\b
   
   - include: '#space'
   - include: '#anyother'
