@@ -43,6 +43,9 @@ patterns:
 - name: constant.language
   match: (?i)\b(null|true|false)\b  # TODO: case sensitiveness?
 
+- name: support.function
+  match: \b(exec_query|any)\b
+
 - name: storage.type
   match: '\b(event|rule|aggregate)\b'
 
