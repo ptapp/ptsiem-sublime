@@ -5,6 +5,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>co</string>
+		<string>agr</string>
 	</array>
 	<key>name</key>
 	<string>CO Positive DSL</string>
@@ -92,13 +93,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(event|rule|aggregate)\b</string>
+			<string>\b(event|rule)\b</string>
 			<key>name</key>
 			<string>storage.type</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(within|with different|timer|sorted_key|query|on|notify|key|from|filter|emit)\b</string>
+			<string>\b(within|with different|timer|sorted_key|query|on|notify|key|from|filter|emit|aggregate)\b</string>
 			<key>name</key>
 			<string>keyword.control</string>
 		</dict>
