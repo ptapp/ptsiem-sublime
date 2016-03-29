@@ -47,10 +47,10 @@ patterns:
   match: \b(exec_query|any)\b
 
 - name: storage.type
-  match: '\b(event|rule|aggregate)\b'
+  match: '\b(event|rule)\b'
 
 - name: keyword.control
-  match: '\b(within|with different|timer|sorted_key|query|on|notify|key|from|filter|emit)\b'
+  match: '\b(within|with different|timer|sorted_key|query|on|notify|key|from|filter|emit|aggregate)\b'
 
 
 - name: meta.identifier  # all the others
