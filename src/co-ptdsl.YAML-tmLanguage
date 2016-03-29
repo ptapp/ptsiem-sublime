@@ -6,7 +6,7 @@
 ---
 name: CO Positive DSL
 scopeName: source.co_dsl
-fileTypes: [co]
+fileTypes: [co, agr]
 uuid: d3894f6f-6a51-41d7-b2cb-497a4286c142
 
 patterns:
